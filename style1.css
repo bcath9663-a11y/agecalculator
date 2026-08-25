@@ -1,0 +1,947 @@
+/* =========================================
+   GLOBAL RESET
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+  --text: #07101d;
+  --secondary: #d8cfae;
+  --dark-text: #07101d;
+}
+
+/* =========================================
+   BODY - DARK BLUE + GOLD BACKGROUND
+========================================= */
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 35px 15px;
+
+  color: #ffffff;
+
+  position: relative;
+  overflow-x: hidden;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(212, 170, 65, 0.13),
+      transparent 22%
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(0, 70, 150, 0.18),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(212, 170, 65, 0.08),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #00030a,
+      #000817,
+      #001126,
+      #000817,
+      #00030a
+    );
+
+  background-size:
+    220% 220%,
+    200% 200%,
+    220% 220%,
+    400% 400%;
+
+  animation: midnightBackground 16s ease infinite;
+}
+
+/* =========================================
+   GOLD GLITTER
+========================================= */
+
+body::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+  z-index: 0;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(255, 235, 160, 0.95) 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle,
+      rgba(212, 170, 65, 0.9) 1px,
+      transparent 1.8px
+    ),
+    radial-gradient(
+      circle,
+      rgba(255, 215, 100, 0.75) 2px,
+      transparent 3px
+    );
+
+  background-size:
+    75px 75px,
+    125px 125px,
+    210px 210px;
+
+  background-position:
+    0 0,
+    35px 60px,
+    100px 25px;
+
+  animation: goldGlitter 10s linear infinite;
+
+  opacity: 0.7;
+}
+
+/* =========================================
+   AMBIENT GOLD GLOW
+========================================= */
+
+body::after {
+  content: "";
+
+  position: fixed;
+
+  width: 550px;
+  height: 550px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(212, 170, 65, 0.055),
+      rgba(0, 45, 100, 0.08) 35%,
+      transparent 70%
+    );
+
+  filter: blur(35px);
+
+  pointer-events: none;
+
+  z-index: 0;
+
+  animation: goldenGlow 7s ease-in-out infinite alternate;
+}
+
+/* =========================================
+   BACKGROUND ANIMATION
+========================================= */
+
+@keyframes midnightBackground {
+  0% {
+    background-position:
+      0% 50%,
+      100% 20%,
+      50% 100%,
+      0% 50%;
+  }
+
+  50% {
+    background-position:
+      100% 40%,
+      0% 70%,
+      100% 20%,
+      100% 50%;
+  }
+
+  100% {
+    background-position:
+      0% 50%,
+      100% 20%,
+      50% 100%,
+      0% 50%;
+  }
+}
+
+@keyframes goldGlitter {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+
+  25% {
+    transform: translateY(-15px) translateX(8px);
+  }
+
+  50% {
+    transform: translateY(-5px) translateX(-12px);
+  }
+
+  75% {
+    transform: translateY(15px) translateX(10px);
+  }
+
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
+@keyframes goldenGlow {
+  0% {
+    opacity: 0.35;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+
+  100% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1.25);
+  }
+}
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.card {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 500px;
+
+  padding: 35px;
+
+  border-radius: 26px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(2, 14, 32, 0.98),
+      rgba(0, 5, 15, 0.98)
+    );
+
+  border: 2px solid rgba(212, 170, 65, 0.65);
+
+  box-shadow:
+    0 0 10px rgba(212, 170, 65, 0.4),
+    0 0 25px rgba(212, 170, 65, 0.15),
+    0 0 50px rgba(0, 55, 130, 0.3),
+    0 25px 70px rgba(0, 0, 0, 0.75);
+
+  text-align: center;
+
+  animation: premiumCardGlow 5s ease-in-out infinite alternate;
+
+  /* Keeps the card above the background effects */
+  isolation: isolate;
+}
+
+@keyframes premiumCardGlow {
+  0% {
+    border-color: rgba(212, 170, 65, 0.45);
+
+    box-shadow:
+      0 0 8px rgba(212, 170, 65, 0.3),
+      0 0 20px rgba(212, 170, 65, 0.12),
+      0 0 35px rgba(0, 55, 130, 0.25),
+      0 25px 70px rgba(0, 0, 0, 0.75);
+  }
+
+  100% {
+    border-color: rgba(255, 210, 90, 0.95);
+
+    box-shadow:
+      0 0 14px rgba(255, 210, 90, 0.55),
+      0 0 30px rgba(212, 170, 65, 0.22),
+      0 0 50px rgba(0, 70, 150, 0.35),
+      0 25px 70px rgba(0, 0, 0, 0.75);
+  }
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header-icon {
+  font-size: 45px;
+  margin-bottom: 5px;
+
+  animation: floatingCake 3s ease-in-out infinite;
+}
+
+@keyframes floatingCake {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+/* =========================================
+   TITLE
+========================================= */
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #f5d77a,
+      #d4aa41,
+      #fff1a8,
+      #c8942e
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  background-size: 200% auto;
+
+  animation: goldTitle 5s linear infinite;
+}
+
+@keyframes goldTitle {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.subtitle {
+  color: #d8cfae;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+/* =========================================
+   DATE INPUT
+========================================= */
+
+.input-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  border: 2px solid rgba(212, 170, 65, 0.5);
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(20, 45, 70, 0.95),
+      rgba(8, 27, 50, 0.95)
+    );
+
+  margin-bottom: 8px;
+
+  transition: 0.25s;
+}
+
+.input-wrapper:focus-within {
+  border-color: #e3b94f;
+
+  box-shadow:
+    0 0 0 3px rgba(212, 170, 65, 0.08),
+    0 0 18px rgba(212, 170, 65, 0.2);
+}
+
+.input-wrapper input[type="text"] {
+  flex: 1;
+  min-width: 0;
+
+  border: none;
+
+  padding: 14px;
+
+  font-size: 16px;
+
+  outline: none;
+
+  color: #ffffff;
+
+  background: transparent;
+}
+
+.input-wrapper input::placeholder {
+  color: rgba(220, 205, 170, 0.55);
+}
+
+.calendar-btn {
+  border: none;
+
+  background: transparent;
+
+  color: #f3d16a;
+
+  font-size: 20px;
+
+  padding: 10px 14px;
+
+  cursor: pointer;
+
+  border-left: 1px solid rgba(212, 170, 65, 0.25);
+}
+
+#dobPicker {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+.hint {
+  font-size: 12px;
+
+  color: #bcb39d;
+
+  text-align: left;
+
+  margin-bottom: 16px;
+}
+
+/* =========================================
+   ERROR
+========================================= */
+
+.error {
+  color: #ff7070;
+
+  font-size: 13px;
+
+  margin-top: -10px;
+  margin-bottom: 12px;
+
+  text-align: left;
+
+  display: none;
+}
+
+.error.show {
+  display: block;
+}
+
+/* =========================================
+   CALCULATE BUTTON
+========================================= */
+
+.main-btn {
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #a87316,
+      #d4aa41,
+      #f3d16a,
+      #b47b19
+    );
+
+  background-size: 250% 100%;
+
+  color: #07101d;
+
+  font-size: 16px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+
+  animation: goldButton 5s ease infinite;
+}
+
+.main-btn:hover {
+  transform: translateY(-2px) scale(1.01);
+
+  box-shadow:
+    0 0 20px rgba(212, 170, 65, 0.5);
+}
+
+@keyframes goldButton {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* =========================================
+   RESULT
+========================================= */
+
+#result {
+  margin-top: 25px;
+  display: none;
+}
+
+#result.show {
+  display: block;
+
+  animation: fadeUp 0.4s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   AGE DISPLAY
+========================================= */
+
+.age-label {
+  font-size: 14px;
+
+  color: #d8cfae;
+
+  margin-bottom: 8px;
+}
+
+.age-display {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.age-watermark {
+  position: absolute;
+
+  font-size: 90px;
+
+  opacity: 0.08;
+}
+
+.age-number {
+  position: relative;
+
+  font-size: 55px;
+
+  font-weight: 800;
+
+  background:
+    linear-gradient(
+      90deg,
+      #f5d77a,
+      #d4aa41,
+      #fff1a8,
+      #c8942e
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  background-size: 200% auto;
+
+  animation: goldAge 4s linear infinite;
+}
+
+@keyframes goldAge {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* =========================================
+   ALL RESULT BOXES
+========================================= */
+
+.live-age,
+.info-box,
+.breakdown > div,
+.stat-box {
+  background:
+    linear-gradient(
+      90deg,
+      #a87316,
+      #d4aa41,
+      #f3d16a,
+      #b47b19
+    );
+
+  background-size: 250% 100%;
+
+  border: 1px solid rgba(255, 220, 110, 0.75);
+
+  color: #07101d;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 5px 15px rgba(0, 0, 0, 0.25);
+
+  animation: goldBoxes 7s ease infinite;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+@keyframes goldBoxes {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* =========================================
+   LIVE AGE
+========================================= */
+
+.live-age {
+  border-radius: 14px;
+
+  padding: 12px;
+
+  margin: 15px 0;
+}
+
+.live-title {
+  font-size: 12px;
+
+  color: #8c1616;
+
+  font-weight: 800;
+
+  margin-bottom: 5px;
+}
+
+#liveAge {
+  font-size: 14px;
+
+  font-weight: 700;
+
+  color: #07101d;
+}
+
+/* =========================================
+   INFO GRID
+========================================= */
+
+.info-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 10px;
+
+  margin-top: 15px;
+}
+
+.info-box {
+  border-radius: 13px;
+
+  padding: 12px 5px;
+
+  transition: 0.25s;
+}
+
+.info-box:hover {
+  transform: translateY(-3px) scale(1.01);
+
+  box-shadow:
+    0 8px 20px rgba(212, 170, 65, 0.35);
+}
+
+.info-box span {
+  display: block;
+
+  font-size: 22px;
+
+  margin-bottom: 5px;
+}
+
+.info-box strong {
+  display: block;
+
+  font-size: 12px;
+
+  color: #07101d;
+}
+
+.info-box small {
+  color: #26310f;
+
+  font-size: 10px;
+
+  font-weight: 600;
+}
+
+/* =========================================
+   SECTION TITLES
+========================================= */
+
+.breakdown-title {
+  font-size: 11px;
+
+  color: #d8cfae;
+
+  margin-top: 20px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.7px;
+}
+
+/* =========================================
+   AGE BREAKDOWN
+========================================= */
+
+.breakdown {
+  display: flex;
+
+  justify-content: space-around;
+
+  margin-top: 8px;
+
+  gap: 8px;
+}
+
+.breakdown > div {
+  border-radius: 13px;
+
+  padding: 10px 5px;
+
+  flex: 1;
+}
+
+.breakdown .num {
+  font-size: 19px;
+
+  font-weight: 800;
+
+  color: #07101d;
+}
+
+.breakdown .lbl {
+  font-size: 9px;
+
+  color: #26310f;
+
+  text-transform: uppercase;
+
+  font-weight: 700;
+}
+
+/* =========================================
+   LIFE STATISTICS
+========================================= */
+
+.stats-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 10px;
+
+  margin-top: 8px;
+}
+
+.stat-box {
+  border-radius: 13px;
+
+  padding: 12px;
+}
+
+.stat-box span {
+  display: block;
+
+  font-size: 20px;
+}
+
+.stat-box strong {
+  display: block;
+
+  font-size: 15px;
+
+  color: #07101d;
+
+  margin: 3px 0;
+
+  font-weight: 800;
+}
+
+.stat-box small {
+  color: #26310f;
+
+  font-size: 10px;
+
+  font-weight: 600;
+}
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.action-buttons {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 8px;
+
+  margin-top: 18px;
+}
+
+.secondary-btn {
+  padding: 10px 5px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #a87316,
+      #d4aa41,
+      #f3d16a,
+      #b47b19
+    );
+
+  background-size: 250% 100%;
+
+  color: #07101d;
+
+  cursor: pointer;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  transition: 0.2s;
+
+  animation: goldBoxes 7s ease infinite;
+}
+
+.secondary-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+
+  box-shadow:
+    0 0 18px rgba(212, 170, 65, 0.45);
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 500){
+    body{
+    padding: 25px 12px;
+  }
+
+  .card {
+    padding: 25px 18px;
+
+    border-radius: 22px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .info-grid {
+    gap: 6px;
+  }
+
+  .info-box {
+    padding: 10px 3px;
+  }
+
+  .age-number {
+    font-size: 48px;
+  }
+}
+
+/* =========================================
+   EXTRA SMALL DEVICES
+========================================= */
+
+@media (max-width: 360px) {
+  body {
+    padding: 15px 8px;
+  }
+
+  .card {
+    padding: 22px 14px;
+  }
+
+  .info-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .action-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .breakdown {
+    gap: 5px;
+  }
+
+  .age-number {
+    font-size: 42px;
+  }
+}
